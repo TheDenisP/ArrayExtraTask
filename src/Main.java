@@ -21,10 +21,6 @@ public class Main {
                     if(arr[j] == arr[k]) {
                         continue;
                     }
-                    else if (keeper == 0 && Math.abs(arr[j]) == Math.abs(arr[k])){
-                        keeper = Math.abs(arr[j]);
-                        break;
-                    }
                     else if (Math.abs(arr[j]) == Math.abs(arr[k]) && Math.abs(arr[j]) > keeper){
 
                             keeper = Math.abs(arr[j]);
