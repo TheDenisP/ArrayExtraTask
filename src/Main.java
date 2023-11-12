@@ -1,27 +1,42 @@
 public class Main {
     public static void main(String[] args) {
-        //int tab[ ] = {3, 2, -2, 5, -3};
-        //int tab[ ] = {1, 1, 2, -1,2, -1};
-        //int tab[ ] = {1, 2, 3, -4};
-        int tab[ ] = {1, 1};
-        boolean checker = false;
-        for (int j = 0; j < tab.length-1; j++){
-            for (int k = j+1; k < tab.length; k++){
-                if(tab[j] == tab[k]) {
-                    continue;
+        int tab1[ ] = {3, 2, -2, 5, -3};
+        int tab2[ ] = {1, 1, 2, -1,2, -1};
+        int tab3[ ] = {1, 2, 3, -4};
+        int tab4[ ] = {1, 1};
+        int tab5[ ] = {-2,2,1,3,-3};
+
+        finder(tab1);
+        finder(tab2);
+        finder(tab3);
+        finder(tab4);
+        finder(tab5);
+    }
+
+    public static void finder(int[] arr){
+        int keeper = 0;
+        for (int j = 0; j < arr.length; j++){
+
+                for (int k = j+1; k < arr.length; k++){
+                    if(arr[j] == arr[k]) {
+                        continue;
+                    }
+                    else if (keeper == 0 && Math.abs(arr[j]) == Math.abs(arr[k])){
+                        keeper = Math.abs(arr[j]);
+                        break;
+                    }
+                    else if (Math.abs(arr[j]) == Math.abs(arr[k]) && Math.abs(arr[j]) > keeper){
+
+                            keeper = Math.abs(arr[j]);
+                            break;
+                    }
                 }
-                else if (Math.abs(tab[j]) == Math.abs(tab[k])){
-                    System.out.println("The returned result is a pair of " + tab[j] + " and " + tab[k]);
-                    checker = true;
-                    break;
-                }
-            }
-            if (checker){
-                break;
-            }
         }
-        if (!checker) {
-            System.out.println("the returned result is information about the lack of pair.");
+        if (keeper == 0) {
+            System.out.println("There is no suitable pair");
+        }
+        else {
+            System.out.println("The pair is " + keeper + " and " + (-keeper));
         }
     }
 }
